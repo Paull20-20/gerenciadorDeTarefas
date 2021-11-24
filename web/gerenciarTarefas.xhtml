@@ -1,0 +1,193 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Gerenciador de tarefas</title>
+        <link rel="stylesheet" href="css/style.css"></link>
+    </h:head>
+    <h:body>
+        
+        <!--Estilização da tela-->
+        <style>
+            
+            div.div-geral{
+                
+               margin-top: 20px;
+                margin-left: 420px;
+                width:50%;
+                height: 310px;
+                
+                
+            }
+            
+            
+            div.form.output2{
+                float: left;
+            }
+            
+            div.div-geral-2{
+                margin-top: 75px;
+                margin-left: 420px;
+                width:50%;
+                height: 310px;
+            }
+            
+            
+        </style>
+        
+        <!--Inputs da tarefa-->
+        <div class="div-geral">
+            <h:form class="form-geral" >
+           
+                <fieldset style="border-radius: 15px;" legend="Objetos">
+
+                <h:panelGrid columns="2">
+                        
+                        <h:outputLabel style="margin-left: 140px;" class="titleOut1" for="titulo2" value="Título: "></h:outputLabel>                
+                        <h:inputText style="width: 460px; height: 30px;" value="#{pessoaBean.pessoa1.titulo2}" ></h:inputText>
+                        
+                        
+                        
+                        <h:outputLabel style="margin-left: 140px;" class="titleOut1" for="descricao2" value="Descrição: "></h:outputLabel>
+                        <h:inputTextarea style="width: 460px; height: 100px;" value="#{pessoaBean.pessoa1.descricao2}"></h:inputTextarea>
+                        
+                        
+                        <h:outputLabel style="margin-left: 140px;" class="titleOut1" for="responsavel2" value="Responsavel: "></h:outputLabel>
+                        <h:inputText style="width: 460px; height: 30px;" value="#{pessoaBean.pessoa1.responsavel2}" ></h:inputText>
+                       
+                       
+                        <h:outputLabel style="margin-left: 140px;" class="titleOut5" for="prioridade2" value="Prioridade:"></h:outputLabel>
+                        <h:inputText style="width: 460px; height: 30px;" value="#{pessoaBean.pessoa1.prioridade2}" ></h:inputText>
+                      
+                        
+                        <h:outputLabel style="margin-left: 140px;"  class="titleOut1" for="deadline2" value="Deadline: "></h:outputLabel>
+                        <h:inputText style="width: 460px; height: 30px;" value="#{pessoaBean.pessoa1.deadline2}" ></h:inputText>
+                        
+                        
+                       <!--<h:outputText id="msg" value="" ></h:outputText>-->
+                        
+                    <br></br>
+                    <br></br>
+                </h:panelGrid>
+                
+                      <toolbar>
+                          <h:commandButton style="cursor: pointer; background-color: #00e676; border: 1px; width: 100px; height: 25px; margin-left: 360px; margin-bottom: 7px;" value="Cadastrar" action="#{pessoaBean.adicionar()}" ></h:commandButton>
+                
+                       </toolbar>
+                <br></br>
+                <br></br>
+                  
+                
+                
+            </fieldset>
+              
+               
+              
+              
+            
+        </h:form>
+            </div>
+        
+        <div class="div-geral-2">
+            
+            <!--Output das tarefas-->
+            
+            <h:form>
+                
+                <fieldset style="border-radius: 15px;" >
+                    
+                     <br></br>   
+                    <toolbar>
+                        <h:commandButton style="cursor: pointer; background-color: #00e676; border: 1px; width: 300px; height: 25px; margin-left: 260px; margin-bottom: 7px;" value="Atualizar sua listagem de tarefas" action="#{pessoaBean.listarTarefas()}"></h:commandButton>
+
+                    </toolbar>
+                    <br></br>
+                    <br></br>
+
+                    <div style="margin-left: 200px;" >
+                    
+                        <h:dataTable style="text-align: center; border: 0.9px solid;" value="#{pessoaBean.pessoa}" var="pessoa1" >
+
+
+
+                            <h:column>
+                                <f:facet name="header">Número/Id</f:facet>
+                                <hr style="border: 0; border-top: 1px solid" ><h:outputText value="#{pessoa1.id}" /></hr>
+                            </h:column>
+                             
+                            <h:column>
+                                <f:facet name="header">Título</f:facet>
+                                <hr style="border: 0; border-top: 1px solid" ><h:outputText value="#{pessoa1.titulo2}" /></hr>
+                            </h:column>
+
+                            <h:column>
+                                <f:facet name="header">Responsável</f:facet>
+                               <hr style="border: 0; border-top: 1px solid" ><h:outputText value="#{pessoa1.responsavel2}" /></hr>
+                            </h:column>
+
+                               <h:column>
+
+                                   <hr style="border: 0; border-top: 1px solid" ><h:commandButton style="cursor: pointer;" value="Editar" action="#{pessoaBean.edicao(pessoa1)}" ></h:commandButton></hr>
+                              </h:column>
+
+                            <h:column>
+                                <f:facet name="header">Ações</f:facet>
+                                <hr style="border: 0; border-top: 1px solid" ><h:commandButton style="cursor: pointer;"  value="Excluir" action="#{pessoaBean.delete2()}"></h:commandButton></hr>
+
+                              </h:column>
+
+                            <h:column>
+
+                                <hr style="border: 0; border-top: 1px solid" ><h:commandButton style="cursor: pointer;"  value="Concluir" action="#{pessoaBean.tarefaConcluida()}"></h:commandButton></hr>
+                              </h:column>
+                        </h:dataTable>
+                        
+                        </div>
+                    <br></br>
+                    <br></br>
+                    <br></br>
+                    
+                    
+                        <!--Sessão para buscar tarefa pelo id-->
+                        <h3 style="text-align: center;" >Sessão de busca</h3>
+                        <br></br>
+                        <h:outputLabel style="margin-left: 140px;"  class="output2" for="titulo2" value="Número:"></h:outputLabel>            
+                        <h:inputText style="width: 460px; height: 30px; margin-left: 35px;"></h:inputText>
+                        <br></br>
+                        <br></br>
+                        
+                        <h:outputLabel style="margin-left: 140px;"  class="output2" for="descricao2" value="Título:"></h:outputLabel>
+                        <h:inputTextarea style="width: 460px; height: 100px; margin-left: 48px;"></h:inputTextarea>
+                        <br></br>
+                        <br></br>
+                        
+                        <h:outputLabel style="margin-left: 140px;"  class="output2" for="deadline2" value="Responsável: "></h:outputLabel>
+                        <h:inputText style="width: 460px; height: 30px; "></h:inputText>
+                        <br></br>
+                        <br></br>
+                        
+                      
+                        <h:outputLabel style="margin-left: 140px;"  class="output3" for="responsavel2" value="Situação: "></h:outputLabel>
+                        <h:inputText  style="width: 460px; height: 30px; margin-left: 27px;"></h:inputText>
+                       <br></br>
+                       <br></br>
+                       <br></br>
+                       
+                             <h:column>
+                                
+                                <h:commandButton style="cursor: pointer; background-color: #00e676; border: 1px; width: 300px; height: 25px; margin-left: 270px; margin-bottom: 7px;"  value="Buscar tarefa"></h:commandButton>
+
+                              </h:column>
+                      
+            
+                    </fieldset>
+        
+                </h:form>   
+        </div>
+        
+        
+    </h:body>
+</html>
+
